@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row m-t-sm">
+        <div class="col-md-15">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="col-md-12 col-sm-12" id="form" style="display:block;">
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso de Cine</h5></div>
+                                </div>
+                                <form [formGroup]="cineForm" (ngSubmit)="agregarCine()">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" formControlName="cine"
+                                            class="form-control" placeholder="Ingresar Nombre">
+                                        <div class="text-danger"
+                                            *ngIf="cineForm.get('nombre')?.hasError('required') && 
+                                                    cineForm.get('nombre')?.touched">
+                                            <span>El nombre <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Calle</label>
+                                        <input type="text" formControlName="calle" 
+                                            class="form-control" placeholder="Ingresar Calle">
+                                        <div class="text-danger"
+                                            *ngIf="cineForm.get('calle')?.hasError('required') && 
+                                                   cineForm.get('calle')?.touched">
+                                            <span>La calle <strong>es obligatoria</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Numero</label>
+                                        <input type="text" formControlName="numero" 
+                                            class="form-control" placeholder="Ingresar Numero">
+                                        <div class="text-danger"
+                                            *ngIf="cineForm.get('numero')?.hasError('required') && 
+                                                    cineForm.get('numero')?.touched">
+                                            <span>El numero <strong>es obligatoria</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Telefono</label>
+                                        <input type="text" formControlName="telefono" 
+                                            class="form-control" placeholder="Ingresar Telefono">
+                                        <div class="text-danger"
+                                            *ngIf="cineForm.get('telefono')?.hasError('required') && 
+                                                    cineForm.get('telefono')?.touched">
+                                            <span>El telefono <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div  class="col-sm-12 text-right">
+                                        <div class="panel-body buttons-margin">
+                                           <button type="submit" [disabled]="cineForm.invalid"  class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-cines">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+      </div>
+    </div>
+  </section>
