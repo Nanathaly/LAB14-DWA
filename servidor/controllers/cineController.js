@@ -18,8 +18,8 @@ exports.obtenerCine = async (req, res) => {
 
     try {
 
-        const cins = await Cine.find();
-        res.json(cins);
+        const cines = await Cine.find();
+        res.json(cines);
         
     } catch (error) {
         console.log(error);
@@ -32,18 +32,18 @@ exports.actualizarCine = async (req, res) => {
 
     try {
 
-        const {_id, nombre, calle, numero, telefono } = new Cine(req.body);
+        const {_id, codigo, nombre, direccion,telefono } = new Cine(req.body);
         let cines = await Cine.findById(req.params.id);
 
         if(!cines){
             res.status(404).json({ msg: 'No existe el cine'});
         }
 
-        nombre._id = _id;
+        codigo._id = _id;
+        cines.codigo = codigo;
         cines.nombre = nombre;
-        cines.calle = calle;
-        cines.numero = numero;
-        cines.telefono = telefono;
+        cines.direccion = direccion;
+        cines.telefono = telefono
 
         console.log(cines)
 
@@ -89,7 +89,7 @@ exports.eliminarCine = async (req, res) => {
 
         await Cine.deleteOne({ _id: req.params.id });
 
-        res.json({ msg: 'El cine: ' + cines.nombre + ' se ha eliminado' });
+        res.json({ msg: 'El cine: ' + cines.codigo + ' se ha eliminado' });
         
     } catch (error) {
         console.log(error);

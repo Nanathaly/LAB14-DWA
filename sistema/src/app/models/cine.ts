@@ -1,16 +1,17 @@
 export class Cine {
 
     _id?: string;
+    codigo: string;
     nombre: string;
-    calle: string;
-    numero: number;
-    telefono: number;
+    direccion: string;
+    telefono: string
+   
 
-    constructor(nombre:string, calle:string, numero: number, telefono: number){
+    constructor(codigo:string, nombre:string, direccion: string, telefono: string){
+        this.codigo = codigo;
         this.nombre = nombre;
-        this.calle = calle;
-        this.numero = numero;
-        this.telefono = telefono;
+        this.direccion = direccion;
+        this.telefono = telefono
     }
 
 }
