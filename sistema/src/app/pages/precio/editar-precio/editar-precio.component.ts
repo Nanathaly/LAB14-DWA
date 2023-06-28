@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './editar-precio.component.html',
   styleUrls: ['./editar-precio.component.css']
 })
-export class EditarPreciosComponent implements OnInit {
+export class EditarPrecioComponent implements OnInit {
   precioForm: FormGroup;
   id: string | null;
 

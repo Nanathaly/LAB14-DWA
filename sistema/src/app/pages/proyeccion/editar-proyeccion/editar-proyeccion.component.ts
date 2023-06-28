@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './editar-proyeccion.component.html',
   styleUrls: ['./editar-proyeccion.component.css']
 })
-export class EditarProyeccionesComponent implements OnInit {
+export class EditarProyeccionComponent implements OnInit {
   proyeccionForm: FormGroup;
   id: string | null;
 

@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './crear-precio.component.html',
   styleUrls: ['./crear-precio.component.css']
 })
-export class CrearPrciosComponent implements OnInit {
+export class CrearPrecioComponent implements OnInit {
   precioForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,

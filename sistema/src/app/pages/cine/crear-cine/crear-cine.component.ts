@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './crear-cine.component.html',
   styleUrls: ['./crear-cine.component.css']
 })
-export class CrearCinesComponent implements OnInit {
+export class CrearCineComponent implements OnInit {
 
   cineForm: FormGroup;
 

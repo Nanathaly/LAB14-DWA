@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './crear-proyeccion.component.html',
   styleUrls: ['./crear-proyeccion.component.css']
 })
-export class CrearProyeccionesComponent implements OnInit {
+export class CrearProyeccionComponent implements OnInit {
 
   proyeccionForm: FormGroup;
 

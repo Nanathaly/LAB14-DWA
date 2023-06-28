@@ -7,7 +7,7 @@ import { Cine } from 'src/app/models/cine';
   templateUrl: './listar-cine.component.html',
   styleUrls: ['./listar-cine.component.css']
 })
-export class ListarCinesComponent {
+export class ListarCineComponent {
   listCines: any[] = []; // Assuming listVuelos is an array of vuelos
 
   constructor(private cineService: CineService) {}

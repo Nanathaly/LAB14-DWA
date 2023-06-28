@@ -7,7 +7,7 @@ import { Precio } from 'src/app/models/precio';
   templateUrl: './listar-precio.component.html',
   styleUrls: ['./listar-precio.component.css']
 })
-export class ListarPrecisComponent implements OnInit {
+export class ListarPrecioComponent implements OnInit {
   listPrecios: Precio[] = [];
 
   constructor(private precioService: PrecioService) {}
