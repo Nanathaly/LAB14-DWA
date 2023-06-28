@@ -1,11 +1,11 @@
-const Tienda = require("../models/Tienda");
+const Precio = require("../models/Precio");
 
-exports.crearTienda = async (req, res) => {
+exports.crearPrecio= async (req, res) => {
     try {
-        const tienda = new Tienda(req.body);
+        const precio = new Precio(req.body);
 
-        await tienda.save();
-        res.send(tienda);
+        await precio.save();
+        res.send(precio);
 
 
     } catch (error) {
@@ -14,12 +14,12 @@ exports.crearTienda = async (req, res) => {
     }
 }
 
-exports.obtenerTiendas = async (req, res) => {
+exports.obtenerPrecio = async (req, res) => {
 
     try {
 
-        const tiendas = await Tienda.find();
-        res.json(tiendas);
+        const precios = await Tienda.find();
+        res.json(precios);
         
     } catch (error) {
         console.log(error);
@@ -28,26 +28,26 @@ exports.obtenerTiendas = async (req, res) => {
 
 }
 
-exports.actualizarTienda = async (req, res) => {
+exports.actualizarPrecio = async (req, res) => {
 
     try {
 
-        const {_id, departamento, distrito, cantidad} = new Tienda(req.body);
-        let tiendas = await Tienda.findById(req.params.id);
+        const {_id, codigo, tipo, valor} = new Precio(req.body);
+        let precios = await Precio.findById(req.params.id);
 
-        if(!tiendas){
-            res.status(404).json({ msg: 'No existe la tienda'});
+        if(!precios){
+            res.status(404).json({ msg: 'No existe el precio'});
         }
 
-        departamento._id = _id;
-        tiendas.departamento = departamento;
-        tiendas.distrito = distrito;
-        tiendas.cantidad = cantidad;
+        codigo._id = _id;
+        precios.codigo = codigo;
+        precios.tipo = tipo;
+        precios.valor = valor;
 
-        console.log(tiendas)
+        console.log(precios)
 
-        tiendas = await Tienda.findOneAndUpdate({ _id: req.params.id }, tiendas, { new: true } );
-        res.json(tiendas);
+        precios = await Precio.findOneAndUpdate({ _id: req.params.id }, precios, { new: true } );
+        res.json(precios);
 
         
     } catch (error) {
@@ -57,17 +57,17 @@ exports.actualizarTienda = async (req, res) => {
 
 }
 
-exports.verTienda = async (req, res) => {
+exports.verPrecio = async (req, res) => {
 
     try {
 
-        let tiendas = await Tienda.findById(req.params.id);
+        let precios = await Precio.findById(req.params.id);
 
-        if(!tiendas){
-            res.status(404).json({ msg: 'No existe la tienda'});
+        if(!precios){
+            res.status(404).json({ msg: 'No existe el precio'});
         }
 
-        res.json(tiendas);
+        res.json(precios);
         
     } catch (error) {
         console.log(error);
@@ -76,19 +76,19 @@ exports.verTienda = async (req, res) => {
 
 }
 
-exports.eliminarTienda = async (req, res) => {
+exports.eliminarPrecio = async (req, res) => {
 
     try {
 
-        let tiendas = await Tienda.findById(req.params.id);
+        let precios = await Precio.findById(req.params.id);
 
-        if(!tiendas){
-            res.status(404).json({ msg: 'No existe la tienda'});
+        if(!precios){
+            res.status(404).json({ msg: 'No existe el precios'});
         }
 
-        await Tienda.deleteOne({ _id: req.params.id });
+        await Precio.deleteOne({ _id: req.params.id });
 
-        res.json({ msg: 'La tienda de ' + tiendas.distrito + ' se ha eliminado' });
+        res.json({ msg: 'El precio de ' + precios.tipo + ' se ha eliminado' });
         
     } catch (error) {
         console.log(error);
