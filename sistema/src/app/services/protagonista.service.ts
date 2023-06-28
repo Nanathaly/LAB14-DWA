@@ -6,7 +6,7 @@ import { Protagonista } from '../models/protagonista';
 @Injectable({
   providedIn: 'root'
 })
-export class CineService {
+export class ProtagonistaService {
   url = 'http://localhost:4000/api/protagonistas/';
 
   constructor(private http: HttpClient) { 

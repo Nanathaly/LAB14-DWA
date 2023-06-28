@@ -1,1 +1,111 @@
-<p>crear-proyeccion works!</p>
+<app-navbar></app-navbar>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row m-t-sm">
+        <div class="col-md-15">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="col-md-12 col-sm-12" id="form" style="display:block;">
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso Proyeccion</h5></div>
+                                </div>
+                                <form [formGroup]="proyeccionForm" (ngSubmit)="agregarProyeccion()">
+                                    <div class="form-group">
+                                        <label>Codigo</label>
+                                        <input type="text" formControlName="codigo"
+                                            class="form-control" placeholder="Ingresar Codigo">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('codigo')?.hasError('required') && 
+                                                    proyeccionForm.get('codigo')?.touched">
+                                            <span>El codigo de la proyección<strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Horario de Pase</label>
+                                        <input type="text" formControlName="horarioPase" 
+                                            class="form-control" placeholder="Ingresar Horario">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('horarioPase')?.hasError('required') && 
+                                                    proyeccionForm.get('horarioPase')?.touched">
+                                            <span>El horario de pase <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pelicula</label>
+                                        <input type="text" formControlName="pelicula" 
+                                            class="form-control" placeholder="Ingresar la pelicula">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('pelicula')?.hasError('required') && 
+                                                    proyeccionForm.get('pelicula')?.touched">
+                                            <span>La pelicula <strong>es obligatoria</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Género</label>
+                                        <input type="text" formControlName="genero" 
+                                            class="form-control" placeholder="Ingresar el genero">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('genero')?.hasError('required') && 
+                                                    proyeccionForm.get('genero')?.touched">
+                                            <span>El género <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Clasificación</label>
+                                        <input type="text" formControlName="clasificación" 
+                                            class="form-control" placeholder="Ingresar la clasificación">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('clasificación')?.hasError('required') && 
+                                                    proyeccionForm.get('clasificación')?.touched">
+                                            <span>La Clasificación <strong>es obligatoria</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cine</label>
+                                        <input type="text" formControlName="cine" 
+                                            class="form-control" placeholder="Ingresar el cine">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('cine')?.hasError('required') && 
+                                                    proyeccionForm.get('cine')?.touched">
+                                            <span>El cine <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Direccion</label>
+                                        <input type="text" formControlName="direccion" 
+                                            class="form-control" placeholder="Ingresar la direccion">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('direccion')?.hasError('required') && 
+                                                    proyeccionForm.get('direccion')?.touched">
+                                            <span>La direccion <strong>es obligatoria</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Precio</label>
+                                        <input type="text" formControlName="precio" 
+                                            class="form-control" placeholder="Ingresar el precio">
+                                        <div class="text-danger"
+                                            *ngIf="proyeccionForm.get('precio')?.hasError('required') && 
+                                                    proyeccionForm.get('precio')?.touched">
+                                            <span>El precio <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                                    
+                                    <div  class="col-sm-12 text-right">
+                                        <div class="panel-body buttons-margin">
+                                           <button type="submit" [disabled]="proyeccionForm.invalid"  class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-proyecciones">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+      </div>
+    </div>
+  </section>

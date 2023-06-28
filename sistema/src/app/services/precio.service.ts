@@ -6,7 +6,7 @@ import { Precio } from '../models/precio';
 @Injectable({
   providedIn: 'root'
 })
-export class TiendaService {
+export class PrecioService {
   url = 'http://localhost:4000/api/precios/';
 
   constructor(private http: HttpClient) { 

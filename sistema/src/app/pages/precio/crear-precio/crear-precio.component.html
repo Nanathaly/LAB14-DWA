@@ -1,1 +1,57 @@
-<p>crear-precio works!</p>
+<app-navbar></app-navbar>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row m-t-sm">
+      <div class="col-md-15">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="col-md-12 col-sm-12" id="form" style="display:block;">
+              <div class="panel panel-filled">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso Precio</h5></div>
+                  </div>
+                  <form [formGroup]="precioForm" (ngSubmit)="agregarPrecio()">
+                    <div class="form-group">
+                      <label>Codigo</label>
+                      <input type="text" formControlName="codigo" class="form-control" placeholder="Ingresar Codigo">
+                      <div class="text-danger"
+                        *ngIf="precioForm.get('codigo')?.hasError('required') && precioForm.get('codigo')?.touched">
+                        <span>El Codigo <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Tipo</label>
+                      <input type="text" formControlName="tipo" class="form-control" placeholder="Ingresar tipo">
+                      <div class="text-danger"
+                        *ngIf="precioForm.get('tipo')?.hasError('required') && precioForm.get('tipo')?.touched">
+                        <span>El Tipo <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Valor</label>
+                      <input type="text" formControlName="valor" class="form-control" placeholder="Ingresar Valor">
+                      <div class="text-danger"
+                        *ngIf="precioForm.get('valor')?.hasError('required') && precioForm.get('valor')?.touched">
+                        <span>El Valor <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 text-right">
+                      <div class="panel-body buttons-margin">
+                        <button type="submit" [disabled]="precioForm.invalid" class="btn btn-w-md btn-success">Guardar</button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-w-md btn-warning" routerLink="/listar-precio">Cancelar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

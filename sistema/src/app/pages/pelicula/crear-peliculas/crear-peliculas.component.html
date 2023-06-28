@@ -9,53 +9,76 @@
                         <div class="panel panel-filled">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso de Producto</h5></div>
+                                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso de Pelicula</h5></div>
                                 </div>
-                                <form [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+                                <form [formGroup]="peliculaForm" (ngSubmit)="agregarPelicula()">
                                     <div class="form-group">
-                                        <label>Producto</label>
-                                        <input type="text" formControlName="producto"
-                                            class="form-control" placeholder="Ingresar Producto">
+                                        <label>Codigo</label>
+                                        <input type="text" formControlName="codigo"
+                                            class="form-control" placeholder="Ingresar Codigo">
                                         <div class="text-danger"
-                                            *ngIf="productoForm.get('producto')?.hasError('required') && 
-                                                    productoForm.get('producto')?.touched">
-                                            <span>El producto <strong>es obligatorio</strong></span>
+                                            *ngIf="peliculaForm.get('codigo')?.hasError('required') && 
+                                                    peliculaForm.get('codigo')?.touched">
+                                            <span>La pelicula <strong>es obligatoria</strong></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Categoria</label>
-                                        <input type="text" formControlName="categoria" 
-                                            class="form-control" placeholder="Ingresar Categoria">
+                                        <label>Titulo</label>
+                                        <input type="text" formControlName="titulo" 
+                                            class="form-control" placeholder="Ingresar Titulo">
                                         <div class="text-danger"
-                                            *ngIf="productoForm.get('categoria')?.hasError('required') && 
-                                                    productoForm.get('categoria')?.touched">
-                                            <span>La categoria <strong>es obligatoria</strong></span>
+                                            *ngIf="peliculaForm.get('titulo')?.hasError('required') && 
+                                                    peliculaForm.get('titulo')?.touched">
+                                            <span>El titulo <strong>es obligatorio</strong></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Ubicacion</label>
-                                        <input type="text" formControlName="ubicacion" 
-                                            class="form-control" placeholder="Ingresar Ubicacion">
+                                        <label>Director</label>
+                                        <input type="text" formControlName="director" 
+                                            class="form-control" placeholder="Ingresar Director">
                                         <div class="text-danger"
-                                            *ngIf="productoForm.get('ubicacion')?.hasError('required') && 
-                                                    productoForm.get('ubicacion')?.touched">
-                                            <span>La ubicacion <strong>es obligatoria</strong></span>
+                                            *ngIf="peliculaForm.get('director')?.hasError('required') && 
+                                            peliculaForm.get('director')?.touched">
+                                            <span>El Director <strong>es obligatorio</strong></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Precio</label>
-                                        <input type="number" formControlName="precio" 
-                                            class="form-control" placeholder="Ingresar Precio">
+                                        <label>Genero</label>
+                                        <input type="text" formControlName="genero" 
+                                            class="form-control" placeholder="Ingresar Genero">
                                         <div class="text-danger"
-                                            *ngIf="productoForm.get('precio')?.hasError('required') && 
-                                                    productoForm.get('precio')?.touched">
-                                            <span>El precio <strong>es obligatorio</strong></span>
+                                            *ngIf="peliculaForm.get('genero')?.hasError('required') && 
+                                            peliculaForm.get('genero')?.touched">
+                                            <span>El Genero <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Clasificacion</label>
+                                        <input type="text" formControlName="clasificacion" 
+                                            class="form-control" placeholder="Ingresar la clasificacion">
+                                        <div class="text-danger"
+                                            *ngIf="peliculaForm.get('clasificacion')?.hasError('required') && 
+                                            peliculaForm.get('clasificacion')?.touched">
+                                            <span>La clasificacion <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Protagonista</label>
+                                        <select formControlName="protagonista" class="form-control">
+                                            <option value="">Seleccionar protagonista</option>
+                                            <option *ngFor="let protagonista of listProtagonista" 
+                                            [value]="protagonista._id">{{ protagonista.nombre }}</option>
+                                        </select>
+                                        <div class="text-danger"
+                                            *ngIf="peliculaForm.get('protagonista')?.hasError('required') && 
+                                                    peliculaForm.get('protagonista')?.touched">
+                                            <span>El protagonista <strong>es obligatorio</strong></span>
                                         </div>
                                     </div>
                                     <div  class="col-sm-12 text-right">
                                         <div class="panel-body buttons-margin">
-                                           <button type="submit" [disabled]="productoForm.invalid"  class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
-                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-productos">Cancelar</button>
+                                           <button type="submit" [disabled]="peliculaForm.invalid"  class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-pelicula">Cancelar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -66,5 +89,7 @@
             </div>
         </div>    
       </div>
+    </div>
+  </section>
     </div>
   </section>

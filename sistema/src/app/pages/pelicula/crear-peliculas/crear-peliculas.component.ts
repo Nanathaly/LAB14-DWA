@@ -3,32 +3,52 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/models/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula.service';
+import { ProtagonistaService } from 'src/app/services/protagonista.service';
 import Swal from 'sweetalert2'
 
+
 @Component({
-  selector: 'app-crear-peliculas',
+  selector: 'app-crear-pelicula',
   templateUrl: './crear-peliculas.component.html',
   styleUrls: ['./crear-peliculas.component.css']
 })
 export class CrearPeliculasComponent {
-
+  listProtagonista: any[]=[];
   peliculaForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private router: Router,
+              private protagonistaService: ProtagonistaService,
               private _peliculaService: PeliculaService){
     this.peliculaForm = this.fb.group({
+        codigo:['',Validators.required],
         titulo:  ['', Validators.required],
         director: ['', Validators.required],
         clasificacion: ['', Validators.required],
         protagonista:  ['', Validators.required],
         genero:  ['', Validators.required]
-    })
+    });
+  }
+  
+  ngOnInit(){
+    this.loadProtagonista()
+  }
+
+  loadProtagonista(){
+    this.protagonistaService.getProtagonistas().subscribe(
+      (response:any)=>{
+        this.listProtagonista=response;
+      },
+      (error:any)=>{
+        console.error(error);
+      }
+      );
   }
 
   agregarPelicula(){
 
     const PELICULA: Pelicula = {
+      codigo:this.peliculaForm.get('codigo')?.value,
       titulo: this.peliculaForm.get('titulo')?.value,
       director: this.peliculaForm.get('director')?.value,
       clasificacion: this.peliculaForm.get('clasificacion')?.value,
@@ -40,7 +60,7 @@ export class CrearPeliculasComponent {
 
     Swal.fire({
       title: 'Creacion de Pelicula',
-      text: "¿Desea crear el pelicula?",
+      text: "Â¿Desea crear el pelicula?",
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
