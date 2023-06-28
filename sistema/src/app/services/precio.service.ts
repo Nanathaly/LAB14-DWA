@@ -1,36 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Tienda } from '../models/precio';
+import { Precio } from '../models/precio';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TiendaService {
-  url = 'http://localhost:4000/api/tiendas/';
+  url = 'http://localhost:4000/api/precios/';
 
   constructor(private http: HttpClient) { 
 
   }
 
-  getTiendas(): Observable<any> {
+  getPrecios(): Observable<any> {
     return this.http.get(this.url);
   }
 
-  deleteTienda(id: string): Observable<any> {
+  deletePrecio(id: string): Observable<any> {
     return this.http.delete(this.url + id);
   }
 
-  guardarTienda(tienda: Tienda): Observable<any> {
-    return this.http.post(this.url, tienda);
+  guardarPrecio(precio: Precio): Observable<any> {
+    return this.http.post(this.url, precio);
   }
 
-  viewTienda(id?: string): Observable<any> {
+  viewPrecio(id?: string): Observable<any> {
     return this.http.get(this.url + id)
   }
 
-  actualizarTienda(id: string, tienda: Tienda): Observable<any> {
-    return this.http.put(this.url + id, tienda);
+  actualizarPrecio(id: string, precio: Precio): Observable<any> {
+    return this.http.put(this.url + id, precio);
   }
 
 }
